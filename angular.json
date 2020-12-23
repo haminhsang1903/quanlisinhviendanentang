@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Manage-Students",
+            "outputPath": "dist/Manage-Students/",
             "index": "src/app/components-login/login/login.component.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
