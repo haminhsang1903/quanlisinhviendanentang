@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Login</title>
+    <style type="text/css">
+
+    </style>
+
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-8 col-lg-4 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body form-signin">
+            <h4 class="card-title text-center">ĐĂNG NHẬP</h4>
+            <form action="/action_page.php" method="POST" role="form">
+              <div class="form-group">
+                <div class="group">      
+                  <input type="text" class="form-control" id="username" name="username" [(ngModel)]="account.username" [ngModelOptions]="{standalone: true}">
+                  <div *ngIf="message == null" style="color: red">{{messageErr}}</div>
+                  <div style="color: red">{{message}}</div>
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Tài khoản</label>
+                </div>
+                <div class="group">      
+                  <input type="password" class="form-control pwd" id="password" name="password" [(ngModel)]="account.password" [ngModelOptions]="{standalone: true}">
+                  <div *ngIf="message == null" style="color: red">{{messageErr1}}</div>
+                  <div style="color: red">{{message}}</div>
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Mật khẩu</label>
+                </div>
+                <span ></span>
+              </div>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" (click)="onLogin()">Đăng nhập</button>
+              <hr class="my-4">
+              <img class="cangiua" src="https://caodang.fpt.edu.vn/wp-content/uploads/x18198154_10208600482868814_3469513_n-234x375.png.pagespeed.ic.JYNM3Lhw_d.png" height="145" width="110"/><br>
+              <p class="textbee"><a href="">BeePoly.edu.vn</a></p>
+
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

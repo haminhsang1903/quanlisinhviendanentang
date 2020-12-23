@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>BeePoly | Đánh giá giảng viên</title>
+	<style type="text/css">
+
+	</style>
+
+</head>
+
+<body>
+	<div class="wrapper">
+
+		<div class="navnav">
+
+			<nav class="navbar navbar ">
+				<div class="sidebar-header">
+					<img src="https://upload.wikimedia.org/wikipedia/commons/2/20/FPT_Polytechnic.png" height=55px
+						width=160px />
+				</div>
+				<button class="welcomename"> Xin chào! {{welcomename}}</button>
+
+			</nav>
+
+			<div class="mainn">
+
+				<div class="main1" style="font-family: arial">
+					
+						<div class="row">
+							<div class="col-3">
+								<div class="infor">
+									<div class="container" style="color: gray;"><br>
+										<h5>{{lecturers.name}}</h5>
+										<span>Lớp: {{id_clazz}}</span><br>
+										<span>Mã môn: {{id_subject}}</span><br>
+										<span>Môn học: {{name_subject}}</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-9">
+								<div class="infor1">
+									<form>
+									<div class="container" style="color: gray;"><br>
+										<h5>Ý kiến sinh viên đối với giảng viên (Trung thực - Khác quan)</h5>
+										<hr>
+										<div class="row">
+											<div class="col-6">
+												<div class="container">
+													<h6>1.Sự đúng giờ của giảng viên trong giờ học</h6>
+
+													<div class="custom-control custom-radio">
+														<input class="form-check-input" type="radio"
+															name="inlineRadioOptions2" id="inlineRadio1" [(ngModel)]="evaluetes.option_1"
+															[ngModelOptions]="{standalone: true}" value="4"
+															checked>
+														<label class="form-check-label" for="inlineRadio1">Luôn đúng
+															giờ</label>
+													</div>
+													<div class="custom-control custom-radio">
+														<input class="form-check-input" type="radio"
+															name="inlineRadioOptions2" id="inlineRadio2" [(ngModel)]="evaluetes.option_1"
+															[ngModelOptions]="{standalone: true}"
+															value="3">
+														<label class="form-check-label" for="inlineRadio2">Phần lón đúng
+															giờ</label>
+													</div>
+													<div class="custom-control custom-radio">
+														<input class="form-check-input" type="radio"
+															name="inlineRadioOptions2" id="inlineRadio3" [(ngModel)]="evaluetes.option_1"
+															[ngModelOptions]="{standalone: true}"
+															value="2">
+														<label class="form-check-label" for="inlineRadio3">Ít khi đúng
+															giờ</label>
+													</div>
+													<div class="custom-control custom-radio">
+														<input class="form-check-input" type="radio"
+															name="inlineRadioOptions2" id="inlineRadio4" [(ngModel)]="evaluetes.option_1"
+															[ngModelOptions]="{standalone: true}"
+															value="1">
+														<label class="form-check-label" for="inlineRadio4">Không bao giờ
+															đúng giờ</label>
+													</div>
+													<br>
+
+													<h6>3. Đảm bảo khối lượng môn học theo chương trình</h6>
+
+													<div class="custom-control custom-radio">
+														<input class="form-check-input" type="radio"
+															name="inlineRadioOptions1" id="inlineRadio1" [(ngModel)]="evaluetes.option_3"
+															[ngModelOptions]="{standalone: true}" value="4"
+															checked>
+														<label class="form-check-label" for="inlineRadio1">Đảm bảo hoàn
+															toàn</label>
+													</div>
+													<div class="custom-control custom-radio">
+														<input class="form-check-input" type="radio"
+															name="inlineRadioOptions1" id="inlineRadio2" [(ngModel)]="evaluetes.option_3"
+															[ngModelOptions]="{standalone: true}"
+															value="3">
+														<label class="form-check-label" for="inlineRadio2">Đảm bảo phần
+															lớn</label>
+													</div>
+													<div class="custom-control custom-radio">
+														<input class="form-check-input" type="radio"
+															name="inlineRadioOptions1" id="inlineRadio3" [(ngModel)]="evaluetes.option_3"
+															[ngModelOptions]="{standalone: true}"
+															value="2">
+														<label class="form-check-label" for="inlineRadio3">Đảm bảo một
+															phần</label>
+													</div>
+													<div class="custom-control custom-radio">
+														<input class="form-check-input" type="radio"
+															name="inlineRadioOptions1" id="inlineRadio4" [(ngModel)]="evaluetes.option_3"
+															[ngModelOptions]="{standalone: true}"
+															value="1">
+														<label class="form-check-label" for="inlineRadio4">Không đảm
+															bảo</label>
+													</div>
+													<br>
+
+													<h6>5. Đáp ứng những thắc mắc của sinh viên trong giờ học</h6>
+
+													<div class="custom-control custom-radio">
+														<input class="form-check-input" type="radio"
+															name="inlineRadioOptions3" id="inlineRadio1" [(ngModel)]="evaluetes.option_5"
+															[ngModelOptions]="{standalone: true}" value="4"
+															checked>
+														<label class="form-check-label" for="inlineRadio1">Trả lời ngay
+															hoặc trả lời vào cuối buổi</label>
+													</div>
+													<div class="custom-control custom-radio">
+														<input class="form-check-input" type="radio"
+															name="inlineRadioOptions3" id="inlineRadio2" [(ngModel)]="evaluetes.option_5"
+															[ngModelOptions]="{standalone: true}"
+															value="3">
+														<label class="form-check-label" for="inlineRadio2">Trả lời sau
+															buổi học</label>
+													</div>
+													<div class="custom-control custom-radio">
+														<input class="form-check-input" type="radio"
+															name="inlineRadioOptions3" id="inlineRadio3" [(ngModel)]="evaluetes.option_5"
+															[ngModelOptions]="{standalone: true}"
+															value="2">
+														<label class="form-check-label" for="inlineRadio3">Một số không
+															trả lời được</label>
+													</div>
+													<div class="custom-control custom-radio">
+														<input class="form-check-input" type="radio"
+															name="inlineRadioOptions3" id="inlineRadio4" [(ngModel)]="evaluetes.option_5"
+															[ngModelOptions]="{standalone: true}"
+															value="1">
+														<label class="form-check-label" for="inlineRadio4">Phần lớn
+															không trả lời được</label>
+													</div>
+													<br>
+												</div>
+
+											</div>
+
+											<div class="col-6">
+												<h6>2. Kỹ năng sư phạm của giảng viên</h6>
+
+												<div class="custom-control custom-radio">
+													<input class="form-check-input" type="radio"
+														name="inlineRadioOptions4" id="inlineRadio1" [(ngModel)]="evaluetes.option_2"
+														[ngModelOptions]="{standalone: true}" value="4"
+														checked>
+													<label class="form-check-label" for="inlineRadio1">Tốt</label>
+												</div>
+												<div class="custom-control custom-radio">
+													<input class="form-check-input" type="radio"
+														name="inlineRadioOptions4" id="inlineRadio2" [(ngModel)]="evaluetes.option_2"
+														[ngModelOptions]="{standalone: true}" value="3">
+													<label class="form-check-label" for="inlineRadio2">Khá</label>
+												</div>
+												<div class="custom-control custom-radio">
+													<input class="form-check-input" type="radio"
+														name="inlineRadioOptions4" id="inlineRadio3" [(ngModel)]="evaluetes.option_2"
+														[ngModelOptions]="{standalone: true}" value="2">
+													<label class="form-check-label" for="inlineRadio3">Trung
+														bình</label>
+												</div>
+												<div class="custom-control custom-radio">
+													<input class="form-check-input" type="radio"
+														name="inlineRadioOptions4" id="inlineRadio4" [(ngModel)]="evaluetes.option_2"
+														[ngModelOptions]="{standalone: true}" value="1">
+													<label class="form-check-label" for="inlineRadio4">Kém</label>
+												</div>
+												<br>
+
+												<h6>4. Hỗ trợ sinh viên trong và ngoài giờ</h6>
+
+												<div class="custom-control custom-radio">
+													<input class="form-check-input" type="radio"
+														name="inlineRadioOptions5" id="inlineRadio1" [(ngModel)]="evaluetes.option_4"
+														[ngModelOptions]="{standalone: true}" value="4"
+														checked>
+													<label class="form-check-label" for="inlineRadio1">Tốt</label>
+												</div>
+												<div class="custom-control custom-radio">
+													<input class="form-check-input" type="radio"
+														name="inlineRadioOptions5" id="inlineRadio2" [(ngModel)]="evaluetes.option_4"
+														[ngModelOptions]="{standalone: true}" value="3">
+													<label class="form-check-label" for="inlineRadio2">Khá</label>
+												</div>
+												<div class="custom-control custom-radio">
+													<input class="form-check-input" type="radio"
+														name="inlineRadioOptions5" id="inlineRadio3" [(ngModel)]="evaluetes.option_4"
+														[ngModelOptions]="{standalone: true}" value="2">
+													<label class="form-check-label" for="inlineRadio3">Trung
+														bình</label>
+												</div>
+												<div class="custom-control custom-radio">
+													<input class="form-check-input" type="radio"
+														name="inlineRadioOptions5" id="inlineRadio3" [(ngModel)]="evaluetes.option_4"
+														[ngModelOptions]="{standalone: true}" value="1">
+													<label class="form-check-label" for="inlineRadio3">Kém</label>
+												</div>
+												<br>
+
+												<h6>6. Đề nghị của sinh viên đối với giảm viên (Không bắt buộc)</h6>
+												<textarea class="form-control" [(ngModel)]="evaluetes.notes"
+												[ngModelOptions]="{standalone: true}" type="text"></textarea><br>
+											</div>
+										</div>
+										<hr>
+										<button class="btn btn-primary" (click)="onAddEvalue()">Gửi ý kiến</button>
+										<br>
+									</div>
+								</form>
+								</div>
+							</div>
+						</div>
+				</div>
+
+			</div><br>
+
+			<div class="footer">
+				@Bee.Poly.Edu.vn
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<!-- Popper.JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+		integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+		crossorigin="anonymous"></script>
+	<!-- Bootstrap JS -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+		integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+		crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+
+	</script>
+</body>
+
+</html>

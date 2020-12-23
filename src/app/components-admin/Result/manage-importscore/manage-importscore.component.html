@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Điểm danh</title>
+    <style type="text/css">
+
+    </style>
+
+</head>
+<body>
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/FPT_Polytechnic.png" height=55px
+                    width=160px />
+            </div>
+            <ul class="list-unstyled">
+                <li>
+                    <a href="/admin/dashboard">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn4.iconfinder.com/data/icons/basic-ui-2-line/32/house-home-main-menu-start-building-128.png"
+                            height="22" width="22" />&nbsp;&nbsp;&nbsp;&nbsp;Trang chủ</a>
+                </li>
+                <li>
+                    <a class="dropdown-btn dropdown-toggle" data-toggle="dropdown">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn0.iconfinder.com/data/icons/data-visualization-2/64/Data_Visualization_4-128.png"
+                            height="20" width="20" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí thông tin
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </a>
+                    <ul class="dropdown-container" id="drop">
+                        <li><a href="/admin/manage-student">Thông tin sinh viên</a></li>
+                        <li *ngIf="show"><a href="/admin/manage-teacher">Thông tin giảng viên</a></li>
+                        <li *ngIf="show"><a href="/admin/manage-employee">Thông tin nhân viên</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/admin/manage-major">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn3.iconfinder.com/data/icons/e-learning-outline-distance-education/512/E-learning_notification-128.png"
+                            height="22" width="22" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí ngành học</a>
+                </li>
+                <li>
+                    <a class="dropdown-btn dropdown-toggle" data-toggle="dropdown">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn4.iconfinder.com/data/icons/online-courses-outline/64/course_online-256.png"
+                            height="20" width="20" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí điểm danh
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </a>
+                    <ul class="dropdown-container" id="drop">
+                        <li><a href="/admin/manage-attendsbyclass">Danh sách theo lớp</a></li>
+                        <li><a href="/admin/manage-attends">Cập nhật điểm danh</a></li>      
+                    </ul>
+                </li>
+                 <li *ngIf="show">
+                    <a href="/admin/manage-account">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn3.iconfinder.com/data/icons/eldorado-stroke-work/40/profile_2-128.png"
+                            height="20" width="20" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí tài khoản</a>
+                </li>
+                <li class="active">
+                    <a class="dropdown-btn dropdown-toggle" data-toggle="dropdown">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn4.iconfinder.com/data/icons/online-courses-outline/64/course_online-256.png"
+                            height="20" width="20" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí điểm số
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </a>
+                    <ul class="dropdown-container" id="drop">
+                        <li><a href="/admin/manage-importscore">Nhập điểm</a></li>
+                        <li><a href="/admin/manage-resultbyclass">Danh sách điểm</a></li>
+                        <li><a href="/admin/manage-result">Cập nhật điểm</a></li>     
+                    </ul>
+                </li>
+                <li>
+                    <a href="/admin/manage-course">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn3.iconfinder.com/data/icons/e-learning-outline-distance-education/512/E-learning_flexible_schedule-128.png"
+                            height="22" width="22" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí khóa học</a>
+                </li>
+                <li>
+                    <a class="dropdown-btn dropdown-toggle" data-toggle="dropdown">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn4.iconfinder.com/data/icons/online-education-9/500/online-education-study_15-128.png"
+                            height="20" width="20" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí lớp học
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </a>
+                    <ul class="dropdown-container" id="drop">
+                        <li><a href="/admin/manage-nominalclass">Lớp học(Thêm khóa)</a></li>
+                        <li><a href="/admin/manage-class">Lớp học(Thêm môn)</a></li>      
+                    </ul>
+                </li>
+                <li>
+                    <a href="/admin/manage-subject">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn1.iconfinder.com/data/icons/marketing-and-advertising-line/128/Customer-Survey_Customer_Survey_customer-satisfaction_evaluate_feedback_checklist_performance-128.png"
+                            height="20" width="20" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí môn học</a>
+                </li>
+                <li>
+                    <a class="dropdown-btn dropdown-toggle" data-toggle="dropdown">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn4.iconfinder.com/data/icons/online-courses-outline/64/course_online-256.png"
+                            height="20" width="20" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí lịch dạy và học
+                        &nbsp;&nbsp;&nbsp;
+                    </a>
+                    <ul class="dropdown-container" id="drop">
+                        <li><a href="/admin/manage-schedules-datenow">Lịch dạy hôm nay</a></li>
+                        <li><a href="/admin/manage-schedules">Cập nhật lịch dạy-học</a></li>      
+                    </ul>
+                </li>
+                <li>
+                    <a href="/admin/manage-semester">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn0.iconfinder.com/data/icons/office-stuff-3/48/office_stuff_book_remind_dairy_work_manage_10-128.png"
+                            height="22" width="22" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí học kỳ</a>
+                </li>
+                <li>
+                    <a class="dropdown-btn dropdown-toggle" data-toggle="dropdown">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn1.iconfinder.com/data/icons/unigrid-multimedia/60/020_label_folder_phone_book_contacts_documents_3-128.png"
+                            height="22" width="22" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí phòng học học
+                        &nbsp;&nbsp;
+                    </a>
+                    <ul class="dropdown-container" id="drop">
+                        <li><a href="/admin/manage-roomdatenow">Phòng học hôm nay</a></li>
+                        <li><a href="/admin/manage-room">Cập nhật phòng học</a></li>      
+                    </ul>
+                </li>
+                <li>
+                    <a href="/admin/manage-skoftes">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn4.iconfinder.com/data/icons/unigrid-basic/60/019_timer_time_stopwatch_3-128.png"
+                            height="22" width="20" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí ca học</a>
+                </li>
+                <li>
+                    <a class="dropdown-btn dropdown-toggle" data-toggle="dropdown">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn0.iconfinder.com/data/icons/time-calendar/24/time_event_calendar_check_attend-256.png"
+                            height="20" width="20" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí bài viết
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </a>
+                    <ul class="dropdown-container" id="drop">
+                        <li><a href="/admin/manage-category">Chuyên mục</a></li>
+                        <li><a href="/admin/manage-post">Bài viết</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/admin/manage-evalue">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn1.iconfinder.com/data/icons/analytic/512/11_data_analytic_statistics-128.png"
+                            height="22" width="22" />&nbsp;&nbsp;&nbsp;&nbsp;Đánh giá giảng viên</a>
+                </li>
+                <li>
+                    <a href="/admin/manage-record">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn2.iconfinder.com/data/icons/project-management-12/68/572-128.png"
+                            height="22" width="22" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí thành tích/kỷ luật</a>
+                </li>
+                <li>
+                    <a class="dropdown-btn dropdown-toggle" data-toggle="dropdown">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn0.iconfinder.com/data/icons/statistical-analysis-15/64/statistics-graph-graphic-growing-business-stats-bars_-128.png" height="18" width="18" />&nbsp;&nbsp;&nbsp;&nbsp;Thống kê
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </a>
+                    <ul class="dropdown-container" id="drop">
+                        <li><a href="/admin/statistical-student-by-year">Tổng số sinh viên/năm</a></li>
+                        <li><a href="/admin/statistical-student-by-major">Tổng số sinh viên/ngành</a></li>
+                        <li><a href="/admin/statistical-student-best-by-major">Sinh viên giỏi/ngành</a></li>
+                        <li><a href="/admin/statistical-student-best-semester">Xếp loại sinh viên/kỳ</a></li>
+                    </ul>
+
+                </li>
+            </ul>
+        </nav>
+
+        <div class="navnav">
+
+            <nav class="navbar navbar ">
+                <div class="navbutton">
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <div class="dropdown">
+                    <button type="button" class="welcomename dropdown-toggle" data-toggle="dropdown">
+                      Xin chào! {{welcome}}
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#" [routerLink]="['/admin/profile-employee']" *ngIf="!show">Xem thông tin</a>
+                      <div class="dropdown-divider" *ngIf="!show"></div>
+                      <a class="dropdown-item" href="/change-password" (click)="change()" *ngIf="!show">Thay đổi mật
+                        khẩu</a>
+                    <div class="dropdown-divider" *ngIf="!show"></div>
+                      <a class="dropdown-item" (click)="logout()">Đăng xuất</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container">
+
+                <div class="main">
+                    <!--  <div class="main1"><br>
+                          <h4 align="center">NHẬP ĐIỂM SINH VIÊN</h4><br>
+                          <div class="form-group">
+                            <label for="pwd">File điểm</label>
+                            <input type="file" name="" class="form-control" multiple 
+            (change)="getFileDetails($event)">    
+                          </div><br>
+                          <button class="btn btn-primary" (click)="uploadFiles()">Nhập điểm</button>         
+                          <br><br>
+                        </div> -->
+                <div class="main1"><br>
+                    <h4>NHẬP ĐIỂM SINH VIÊN</h4><hr><br>
+                    <form class="needs-validation" novalidate>
+                        <ng-container>
+                            <label for="pwd">Chọn file điểm</label>
+                            <input type="file" id="file" multiple 
+                                name="file" #fileInput  class="form-control" required>
+                                <div class="invalid-feedback">Vui lòng chọn file!</div><br>
+
+                            <button (click)="uploadFile();" class="btn btn-primary">Nhập điểm</button>
+                        </ng-container>
+                    </form>
+                      <br><br>
+
+                      <div *ngIf="messSuccess !=null" class="alert alert-success">
+                        <strong>{{messSuccess}}</strong>
+                      </div>
+                </div>
+                
+                </div>
+
+			</div>
+
+            <div class="footer">
+                @Bee.Edu.vn
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

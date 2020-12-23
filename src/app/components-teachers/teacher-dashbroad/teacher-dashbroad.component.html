@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>BeePoly | Bảng điều khiển</title>
+    <style type="text/css">
+
+    </style>
+
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+         <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/FPT_Polytechnic.png" height=55px width=160px/>
+            </div>
+
+            <ul class="list-unstyled">
+                <li class="active">
+                    <a [routerLink]="['/teacher/dashboard']">&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cdn1.iconfinder.com/data/icons/rcons-transport/32/speedometer-128.png" height="20" width="20"/>&nbsp;&nbsp;&nbsp;&nbsp;Bảng điều khiển</a>
+                </li>
+                <li >
+                    <a [routerLink]="['/teacher/myclass']">&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://www.iconfinder.com/data/icons/thin-law-enforcement/24/thin-1606_jury_court_guilty-128.png" height="20" width="20"/>&nbsp;&nbsp;&nbsp;&nbsp;Lớp của tôi</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/teacher/schedule']">&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://cdn2.iconfinder.com/data/icons/productivity/256/Working_Schedule-128.png" height="20" width="20"/>&nbsp;&nbsp;&nbsp;&nbsp;Lịch dạy</a>
+                </li>
+                
+            </ul>
+        </nav>
+
+        <div class="navnav">
+
+            <nav class="navbar navbar ">
+                <div class="navbutton">
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <div class="dropdown">
+                    <button type="button" class="welcomename dropdown-toggle" data-toggle="dropdown">
+                      Xin chào! {{welcomename}}
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#" [routerLink]="['/teacher/profile']">Xem thông tin</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="/change-password" (click)="change()">Đổi mật khẩu</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" (click)="logout()">Đăng xuất</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container">
+
+                <div class="main">
+                     <div class="main1"><br>
+                        
+                          <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                              <a class="nav-link active" data-toggle="tab" href="#home">Lịch dạy hôm nay</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" data-toggle="tab" href="#menu1">Lớp của tôi</a>
+                            </li>
+                          </ul>
+
+                          <div class="tab-content">
+                            <div id="home" class="container tab-pane active"><br>
+
+                              <table class="table table-striped table-hover" style="color: #383838; font-size: 14px">
+                                <thead class="thead-light">
+                                  <tr>
+                                    <td>Lớp</td>
+                                    <td>Mã môn</td>
+                                    <td>Tên môn</td>
+                                    <td>Phòng</td>
+                                    <td>Khu giảng đường</td>
+                                    <td>Ca học</td>
+                                    <td>Điểm danh</td>
+                                    <td>Ghi chú</td>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let item of schedule ">
+                                    <td>{{item.id_class.id_class}}</td>
+                                    <td>{{item.id_class.id_subjects.id_subjects}}</td>
+                                    <td>{{item.id_class.id_subjects.name}}</td>
+                                    <td>{{item.id_rooms.name}}</td>
+                                    <td>BEE POLY</td>
+                                    <td>{{item.id_skoftes.name}}</td>
+                                    <td><a style="color: blue;" (click)="onAttendClazz(item.id_class.id_class)">Điểm danh</a></td>
+                                    <td>{{item.notes}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <div id="menu1" class="container tab-pane fade"><br>
+                              <table class="table table-striped table-hover" style="color: #383838; font-size: 14px">
+                                <thead class="thead-light">
+                                  <tr>
+                                    <td>#</td>
+                                    <td>Mã môn</td>
+                                    <td>Tên môn</td>
+                                    <td>Tên lớp</td>
+                                    <td>Import điềm</td>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let item of clazzs; let i =index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{item.id_subjects.id_subjects}}</td>
+                                    <td>{{item.id_subjects.name}}</td>
+                                    <td>{{item.id_class}}</td>
+                                    <td style="color: blue;"><a href="teacher/import-score" (click)="SendID_Clazz(item.id_class)">Nhập điểm</a></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            
+                          </div>
+                          <br>
+                        </div>
+                    
+                </div>
+
+                <div class="main">
+                     <div class="main1"><br>
+                        <span><img src="https://cdn1.iconfinder.com/data/icons/materia-office-vol-2/24/010_057_calendar_date_schedule_event_month_year_history-128.png" height="20" width="20"/>&nbsp;&nbsp;&nbsp;&nbsp;Lịch dạy 7 ngày tới</span>
+                        <br><br>
+                        <table class="table table-striped table-hover" style="color: #383838; font-size: 14px">
+                                <thead class="thead-light">
+                                   <td>#</td>
+                                    <td>Ngày</td>
+                                    <td>Lớp</td>
+                                    <td>Mã môn</td>
+                                    <td>Tên môn</td>
+                                    <td>Phòng</td>
+                                    <td>Giảng đường</td>
+                                    <td>Ca dạy</td>
+                                    <td>Thời gian</td>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let item of schedules; let i = index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{item.date | date: "dd/MM/yyyy"}}</td>
+                                    <td>{{item.id_class.name}}</td>
+                                    <td>{{item.id_class.id_subjects.id_subjects}}</td>
+                                    <td>{{item.id_class.id_subjects.name}}</td>
+                                    <td>{{item.id_rooms.name}}</td>
+                                    <td>BEE POLY</td>
+                                    <td>{{item.id_skoftes.name}}</td>
+                                    <td>{{item.id_skoftes.start}}-{{item.id_skoftes.ends}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                       </div>
+                    <br>
+                </div>
+
+			</div>
+
+            <div class="footer">
+                @Bee.Poly.Edu.vn
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        
+    </script>
+</body>
+</html>
+

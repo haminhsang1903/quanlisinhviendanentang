@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>BeePoly | Quản lí khóa học</title>
+    <style type="text/css">
+
+    </style>
+
+</head>
+<body>
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/FPT_Polytechnic.png" height=55px
+                    width=160px />
+            </div>
+            <ul class="list-unstyled">
+                <li>
+                    <a href="/admin/dashboard">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn4.iconfinder.com/data/icons/basic-ui-2-line/32/house-home-main-menu-start-building-128.png"
+                            height="22" width="22" />&nbsp;&nbsp;&nbsp;&nbsp;Trang chủ</a>
+                </li>
+                <li>
+                    <a class="dropdown-btn dropdown-toggle" data-toggle="dropdown">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn0.iconfinder.com/data/icons/data-visualization-2/64/Data_Visualization_4-128.png"
+                            height="20" width="20" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí thông tin
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </a>
+                    <ul class="dropdown-container" id="drop">
+                        <li><a href="/admin/manage-student">Thông tin sinh viên</a></li>
+                        <li *ngIf="show"><a href="/admin/manage-teacher">Thông tin giảng viên</a></li>
+                        <li *ngIf="show"><a href="/admin/manage-employee">Thông tin nhân viên</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/admin/manage-major">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn3.iconfinder.com/data/icons/e-learning-outline-distance-education/512/E-learning_notification-128.png"
+                            height="22" width="22" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí ngành học</a>
+                </li>
+                <li>
+                    <a class="dropdown-btn dropdown-toggle" data-toggle="dropdown">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn4.iconfinder.com/data/icons/online-courses-outline/64/course_online-256.png"
+                            height="20" width="20" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí điểm danh
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </a>
+                    <ul class="dropdown-container" id="drop">
+                        <li><a href="/admin/manage-attendsbyclass">Danh sách theo lớp</a></li>
+                        <li><a href="/admin/manage-attends">Cập nhật điểm danh</a></li>      
+                    </ul>
+                </li>
+                 <li *ngIf="show">
+                    <a href="/admin/manage-account">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn3.iconfinder.com/data/icons/eldorado-stroke-work/40/profile_2-128.png"
+                            height="20" width="20" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí tài khoản</a>
+                </li>
+                <li>
+                    <a class="dropdown-btn dropdown-toggle" data-toggle="dropdown">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn4.iconfinder.com/data/icons/online-courses-outline/64/course_online-256.png"
+                            height="20" width="20" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí điểm số
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </a>
+                    <ul class="dropdown-container" id="drop">
+                        <li><a href="/admin/manage-resultbyclass">Danh sách điểm</a></li>
+                        <li><a href="/admin/manage-result">Cập nhật điểm</a></li>     
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="/admin/manage-course">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn3.iconfinder.com/data/icons/e-learning-outline-distance-education/512/E-learning_flexible_schedule-128.png"
+                            height="22" width="22" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí khóa học</a>
+                </li>
+                <li>
+                    <a class="dropdown-btn dropdown-toggle" data-toggle="dropdown">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn4.iconfinder.com/data/icons/online-education-9/500/online-education-study_15-128.png"
+                            height="20" width="20" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí lớp học
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </a>
+                    <ul class="dropdown-container" id="drop">
+                        <li><a href="/admin/manage-nominalclass">Lớp danh nghĩa</a></li>
+                        <li><a href="/admin/manage-class">Lớp học môn</a></li>        
+                    </ul>
+                </li>
+                <li *ngIf="show">
+                    <a href="/admin/manage-subject">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn1.iconfinder.com/data/icons/marketing-and-advertising-line/128/Customer-Survey_Customer_Survey_customer-satisfaction_evaluate_feedback_checklist_performance-128.png"
+                            height="20" width="20" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí môn học</a>
+                </li>
+                <li>
+                    <a class="dropdown-btn dropdown-toggle" data-toggle="dropdown">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn4.iconfinder.com/data/icons/online-courses-outline/64/course_online-256.png"
+                            height="20" width="20" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí lịch dạy và học
+                        &nbsp;&nbsp;&nbsp;
+                    </a>
+                    <ul class="dropdown-container" id="drop">
+                        <li><a href="/admin/manage-schedules-datenow">Lịch dạy hôm nay</a></li>
+                        <li><a href="/admin/manage-schedules">Quản lí lịch dạy-học</a></li>      
+                    </ul>
+                </li>
+                <li>
+                    <a href="/admin/manage-semester">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn0.iconfinder.com/data/icons/office-stuff-3/48/office_stuff_book_remind_dairy_work_manage_10-128.png"
+                            height="22" width="22" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí học kỳ</a>
+                </li>
+                <li>
+                    <a class="dropdown-btn dropdown-toggle" data-toggle="dropdown">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn1.iconfinder.com/data/icons/unigrid-multimedia/60/020_label_folder_phone_book_contacts_documents_3-128.png"
+                            height="22" width="22" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí phòng học &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </a>
+                    <ul class="dropdown-container" id="drop">
+                        <li><a href="/admin/manage-roomdatenow">Tra cứu phòng học</a></li>
+                        <li><a href="/admin/manage-room">Quản lí phòng học</a></li>      
+                    </ul>
+                </li>
+                <li>
+                    <a href="/admin/manage-skoftes">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn4.iconfinder.com/data/icons/unigrid-basic/60/019_timer_time_stopwatch_3-128.png"
+                            height="22" width="20" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí ca học</a>
+                </li>
+                <li>
+                    <a class="dropdown-btn dropdown-toggle" data-toggle="dropdown">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn0.iconfinder.com/data/icons/time-calendar/24/time_event_calendar_check_attend-256.png"
+                            height="20" width="20" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí bài viết
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </a>
+                    <ul class="dropdown-container" id="drop">
+                        <li><a href="/admin/manage-category">Chuyên mục</a></li>
+                        <li><a href="/admin/manage-post">Bài viết</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/admin/manage-evalue">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn1.iconfinder.com/data/icons/analytic/512/11_data_analytic_statistics-128.png"
+                            height="22" width="22" />&nbsp;&nbsp;&nbsp;&nbsp;Đánh giá giảng viên</a>
+                </li>
+                <li>
+                    <a href="/admin/sendMail">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn2.iconfinder.com/data/icons/picons-basic-2/57/basic2-052_envelope_mail_letter-128.png"
+                            height="22" width="22" />&nbsp;&nbsp;&nbsp;&nbsp;Gửi mail thông báo</a>
+                </li>
+                <li>
+                    <a href="/admin/manage-record">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn2.iconfinder.com/data/icons/project-management-12/68/572-128.png"
+                            height="22" width="22" />&nbsp;&nbsp;&nbsp;&nbsp;Quản lí thành tích/kỷ luật</a>
+                </li>
+                <li>
+                    <a class="dropdown-btn dropdown-toggle" data-toggle="dropdown">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            src="https://cdn0.iconfinder.com/data/icons/statistical-analysis-15/64/statistics-graph-graphic-growing-business-stats-bars_-128.png" height="18" width="18" />&nbsp;&nbsp;&nbsp;&nbsp;Thống kê
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </a>
+                    <ul class="dropdown-container" id="drop">
+                        <li><a href="/admin/statistical-student-by-year">Tổng số sinh viên/năm</a></li>
+                        <li><a href="/admin/statistical-student-by-major">Tổng số sinh viên/ngành</a></li>
+                        <li><a href="/admin/statistical-student-best-by-major">Sinh viên giỏi/ngành</a></li>
+                        <li><a href="/admin/statistical-student-best-semester">Xếp loại sinh viên/kỳ</a></li>
+                    </ul>
+
+                </li>
+            </ul>
+        </nav>
+
+        <div class="navnav">
+
+            <nav class="navbar navbar ">
+                <div class="navbutton">
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <div class="dropdown">
+                    <button type="button" class="welcomename dropdown-toggle" data-toggle="dropdown">
+                      Xin chào! {{welcome}}
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#" [routerLink]="['/admin/profile-employee']" *ngIf="!show">Xem thông tin</a>
+                      <div class="dropdown-divider" *ngIf="!show"></div>
+                      <a class="dropdown-item" href="/change-password" (click)="change()" *ngIf="!show">Thay đổi mật khẩu</a>
+                      <div class="dropdown-divider" *ngIf="!show"></div>
+                      <a class="dropdown-item" (click)="logout()">Đăng xuất</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container">
+
+              <div class="main">
+                   <div class="main1"><br>
+                             <h4>QUẢN LÍ KHÓA HỌC <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="float: right;">Thêm mới</button></h4><hr>
+                             
+                             <div class="row">
+                                 <div class="col-10 bg-default">
+                                    <input type="text" class="form-control table-filter" data-table="books" placeholder="Tìm kiếm..." [(ngModel)]="key">
+                                 </div>
+                                 <div class="col-2 bg-default">
+                                    <button type="submit" class="btn btn-primary" style="float: right;" (click)="onSearch()"><img src="https://cdn1.iconfinder.com/data/icons/material-core/18/search-128.png" height="20px" width="20px">Tìm kiếm</button>
+                                 </div>
+                             </div>
+                             <br>
+                            <div #TABLE #table>
+                             <div class="row">
+                                 <div class="col-6 bg-default">
+                                    
+                                 </div>
+                                  <div class="col-6 bg-default">
+                                    <button class="excelimport" (click)="ExportTOExcel()">Xuất file excel</button>
+                                 </div>
+                            </div>
+                            <br>
+                             <table class="table table-striped mt32 customers-list books" style="font-size: 14px;">
+                                <thead>
+                                  <tr>
+                                    <td>Mã khóa học</td>
+                                    <td>Tên khóa học</td>
+                                    <td></td>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let item of courses | filter:search | orderBy: order:reverse | paginate: { itemsPerPage: pagesize, currentPage: p }">
+                                    <td>{{item.id_course}}</td>
+                                    <td>{{item.name}}</td>
+                                    <td>
+                                      <button type="button" class="btn btn-primary" (click)="onEditCourse(item)"><img src="https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/new-24-256.png" height="20px" width="20px" data-toggle="modal" data-target="#myModal1"></button>&nbsp;
+
+                                        <div id="myModal3" class="modal fade">
+                                                <div class="modal-dialog modal-confirm">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header flex-column">
+                                                            <div class="icon-box">
+                                                                <i class="material-icons">&#xE5CD;</i>
+                                                            </div>                      
+                                                            <h4 class="modal-title w-100">Bạn có chắc chắn?</h4>    
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>Bạn có thực sự muốn xóa dòng này?</p>
+                                                        </div>
+                                                        <div class="modal-footer justify-content-center">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+                                                            <button type="button" class="btn btn-danger" (click)="onDeleteCourses(item.id_course)">Xóa</button>
+                                                        </div>
+                                                        <br>
+                                                        <p style="color: red;" align="center">{{messDelete}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                      <button type="button" class="btn btn-danger" data-toggle="modal" href="#myModal3" (click)="onDeleteCourse(item.id_course)"><img src="https://cdn4.iconfinder.com/data/icons/free-ui/64/v-30-128.png" height="20px" width="20px"></button>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                          </div>
+                          <hr>
+                          <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
+
+                          <label>Xem</label>&nbsp;
+                          <select class="custom-select" style="width: auto" name="pagesize" [(ngModel)]="pagesize" >
+                            <option [ngValue]="10">10</option>
+                            <option [ngValue]="20">20</option>
+                          </select>
+                          <br><br>
+                      </div><br>
+                 </div>
+            </div>
+
+            <div class="footer">
+                @Bee.Poly.Edu.vn
+            </div>
+        </div>
+    </div>
+
+    <!-- The Modal -->
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+          
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">THÊM MỚI</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="/action_page.php" method="POST" id="Q_A">
+                        <div *ngIf="messSuccess !=null" class="alert alert-success">
+                           <strong>{{messSuccess}}</strong>
+                        </div>
+                        <div *ngIf="messErrors !=null" class="alert alert-danger">
+                        <strong>{{messErrors}}</strong>
+                        </div>
+                    <div class="form-group">
+                        <label for="usr">Mã khóa học</label>
+                            <input type="text" class="form-control" id="id" name="id" [(ngModel)]="course.id_course" [ngModelOptions]="{standalone: true}">
+                            <div class="alert-danger" *ngIf="course.id_course == null">{{messNullId}}</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Tên khóa học</label>
+                            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="course.name" [ngModelOptions]="{standalone: true}">
+                            <div class="alert-danger" *ngIf="course.name == null">{{messNullName}}</div>
+                    </div><br>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary" (click)="onAddCourse()">Lưu <img src="https://cdn1.iconfinder.com/data/icons/essentials-pack/96/download_arrow_save_downloading_interface-128.png" height="20px" width="20px"></button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal" ID="mod_cls">Close</button>
+                    </div>
+                </form><br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+          <!-- The Modal -->
+      <div class="modal fade" id="myModal1">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+          
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">CẬP NHẬT</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="/action_page.php" method="POST" id="Q_A">
+                        <div *ngIf="messSuccess1 !=null" class="alert alert-success">
+                           <strong>{{messSuccess1}}</strong>
+                        </div>
+                        <div *ngIf="messErrors1 !=null" class="alert alert-danger">
+                        <strong>{{messErrors1}}</strong>
+                        </div>
+                    <div class="form-group">
+                        <label for="usr">Mã khóa học</label>
+                            <input type="text" class="form-control" id="id" name="id" [(ngModel)]="course.id_course" [ngModelOptions]="{standalone: true}" readonly>
+                            <!-- <div class="invalid-feedback">Vui lòng nhập mã khóa học!</div> -->
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Tên khóa học</label>
+                            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="course.name" [ngModelOptions]="{standalone: true}">
+                            <div class="alert-danger">{{messNullName}}</div>
+                    </div><br>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary" (click)="updateCourse()">Cập nhật <img src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_system_update_tv_48px-128.png" height="20px" width="20px"></button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal" ID="mod_cls">Close</button>
+                    </div>
+                </form><br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        
+    </script>
+</body>
+</html>
